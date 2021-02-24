@@ -9,17 +9,24 @@ x =linspace(0,l,nx);
 dx = x(2)-x(1);
 xm = x(1:nx-1) + 0.5*dx;
 
-ni = x < l/2;
-pi = x >= l/2;
+% ni = x < l/2;
+% pi = x >= l/2;
 
 Nd = 4e16 * 1e6; % Const. 1/cm3 (100 cm/m)^3
 Na = 1e16 * 1e6;
-NetDoping(ni) = Nd;
-NetDoping(pi) = -Na;
+NetDoping = linspace(Nd, -Na, nx); % add linear doping at junction
+% NetDoping(ni) = Nd;
+% NetDoping(pi) = -Na;
 
 x0 = l/2;
 nw = l/20;
-npDisturbance = 0e16*1e6*exp(-((x-x0)/nw).^2);
+
+np_on = 0;
+if np_on
+    npDisturbance = 0e16*1e6*exp(-((x-x0)/nw).^2);
+else
+    npDisturbance = 0;
+end
 
 JBC = 1;
 

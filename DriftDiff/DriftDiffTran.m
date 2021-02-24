@@ -59,6 +59,10 @@ elseif strcmp(Simulation,'PNJctEq')
     eval('SetPNJctParasEqBC');
 elseif strcmp(Simulation,'PNJctEqBias')
     eval('SetPNJctParasEqBCBias');
+elseif strcmp(Simulation,'GaussianTwoCarRC_PALin')
+    eval('SetGaussian2CarParasRCOnly_Lin');
+elseif strcmp(Simulation,'GaussianTwoCarRC_PAExp')
+    eval('SetGaussian2CarParasRCOnly_Exp');
 end
 
 FormGv(nx,LVbc,RVbc); % Poisson equation set Gv and Bv
